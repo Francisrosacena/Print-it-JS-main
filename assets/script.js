@@ -34,8 +34,6 @@ function printitSlide(n) {
 	  dot.classList.remove("dot_selected");
 	});
 	dots[n].classList.add("dot_selected");
-  
-	currentSlide = n;
   }
 
 arrowLeft.addEventListener("click", function () {
