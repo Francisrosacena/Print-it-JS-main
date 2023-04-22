@@ -37,16 +37,16 @@ function printitSlide(n) {
   }
 
 arrowLeft.addEventListener("click", function () {
-	current--;
-	if (current < 0) {
-	  current = slides.length - 1;
+	current--; // Décrémente la variable `current` de 1
+	if (current < 0) { // Si `current` est inférieur à 0 (i.e. on est sur la première diapositive), alors...
+	  current = slides.length - 1; // On met `current` à l'index de la dernière diapositive dans le tableau `slides`
 	}
 	printitSlide(current);
   });
 	  
 	// Right arrow click
 arrowRight.addEventListener("click", function () {
-		current++;
+		current++; //Incrémente la variable `currentSlide` de 1
   if (current > slides.length - 1) {
     current = 0;
   }
@@ -55,27 +55,25 @@ arrowRight.addEventListener("click", function () {
 
 
 function initSlider() {
-  const dots = document.querySelector(".dots");
-  
+	const dots = document.querySelector(".dots"); 
 	
-	for (let i = 0; i < slides.length; i++) {
-	const dotsContainer = document.createElement("div");
-	dotsContainer.classList.add("dot");
-	  if (i === current) {
-		dotsContainer.classList.add("dot_selected");
+	for (let i = 0; i < slides.length; i++) { // Pour chaque diapositive dans le tableau `slides`
+	  const dotsContainer = document.createElement("div"); // Crée un nouvel élément HTML `div` et le stocke dans la variable `dotsContainer`
+	  dotsContainer.classList.add("dot"); // Ajoute la classe "dot" à l'élément `dotsContainer`
+	  if (i === current) { // Si l'index actuel est égal à la variable `current`
+		dotsContainer.classList.add("dot_selected"); // Ajoute la classe "dot_selected" à l'élément `dotsContainer`
 	  }
-	  dotsContainer.addEventListener("click", () => {
-		printitSlide(i);
+	  dotsContainer.addEventListener("click", () => { // Ajoute un écouteur d'événement pour le clic sur l'élément `dotsContainer`
+		printitSlide(i); // Appelle la fonction `printitSlide()` avec l'index de la diapositive correspondante en tant qu'argument
 	  });
-	  
-	  dots.appendChild(dotsContainer);
+		
+	  dots.appendChild(dotsContainer); // Ajoute l'élément `dotsContainer` à l'élément `dots` sélectionné précédemment
 	}
-  
-	printitSlide(current);
+	
+	printitSlide(current); // Appelle la fonction `printitSlide()` avec l'index de la diapositive actuelle en tant qu'argument pour afficher la diapositive
   }
   
   initSlider();
-  
   
 
  
